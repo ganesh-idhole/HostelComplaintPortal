@@ -26,7 +26,7 @@ const Signup = () => {
 
     const submit = async () => {
         console.log(username, email, password);
-        let result = await fetch("http://localhost:5000/register", {
+        let result = await fetch("https://hostelcomplaintportalbackend1.onrender.com/register", {
             method: "post",
             body: JSON.stringify({ username, email, password }),
             headers: {
