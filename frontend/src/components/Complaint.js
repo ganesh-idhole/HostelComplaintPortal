@@ -31,7 +31,7 @@ const Complaint = ()=>{
   },[])
    
   const getStudent = async() =>{
-      let result = await fetch(`http://localhost:5000/getwho/${parameter.id}`);
+      let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/getwho/${parameter.id}`);
         result = await result.json();
         //  console.log("getname-->",result._id);
        SetSenderid(result._id);
@@ -79,7 +79,7 @@ const Complaint = ()=>{
     setStatus("pending");                                   
     //complaint collection
     if(userid===senderusername){
-      let result = await fetch("http://localhost:5000/complaintform", {
+      let result = await fetch("https://hostelcomplaintportalbackend1.onrender.com/complaintform", {
         method: "post",
         body: JSON.stringify({ name,userid,phone,email,date,hostel,room,complainttype,description,
           senderid,senderusername,status,electrician,plumber,carpenter,internet,
