@@ -13,7 +13,7 @@ const Status = () => {
         getStatus();
     }, [])
     const getStatus = async () => {
-        let result = await fetch(`http://localhost:5000/getstatus/${parameter.id}`);
+        let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/getstatus/${parameter.id}`);
         result = await result.json();
         // console.log("re-->"+result[0].name);
         if (result) {
@@ -26,7 +26,7 @@ const Status = () => {
 
 
     const Workdone = async (id) => {
-        let result = await fetch(`http://localhost:5000/putstatus/${id}`, {
+        let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/putstatus/${id}`, {
             method: "put",
             body: await JSON.stringify({ status }),
             headers: {
@@ -56,13 +56,13 @@ const Status = () => {
     //  },[])
     const DeleteForStudent = async (id, deleteforadmin) => {
         if (deleteforadmin === "true") {
-            let result = await fetch(`http://localhost:5000/delete/${id}`, {
+            let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/delete/${id}`, {
                 method: "delete"
             });
             result = await result.json();
             //   console.log(result);
         } else {
-            let result = await fetch(`http://localhost:5000/update/${id}`, {
+            let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/update/${id}`, {
                 method: "put",
                 body: await JSON.stringify({ deleteforstudent }),
                 headers: {
