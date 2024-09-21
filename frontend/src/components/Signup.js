@@ -55,7 +55,7 @@ const Signup = () => {
           }
 
         if(role==="Student"){
-            let result = await fetch("http://localhost:5000/register", {
+            let result = await fetch("https://hostelcomplaintportalbackend1.onrender.com/register", {
                 method: "post",
                 body: JSON.stringify({ username, email, password, collagename, role, hostel }),
                 headers: {
@@ -67,7 +67,7 @@ const Signup = () => {
             localStorage.setItem("studentKey", JSON.stringify(result));
             navigate("/");
         }else if(role==="Admin" && code==="22MCMC03"){
-        let result = await fetch("http://localhost:5000/register", {
+        let result = await fetch("https://hostelcomplaintportalbackend1.onrender.com/register", {
             method: "post",
             body: JSON.stringify({ username, email, password, collagename, role, hostel }),
             headers: {
