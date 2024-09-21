@@ -11,15 +11,15 @@ const Status = () => {
     useEffect(() => {
         // console.log("parameter=="+parameter);
         getStatus();
-<<<<<<< HEAD
+
     }, [])
     const getStatus = async () => {
         let result = await fetch(`http://localhost:5000/getstatus/${parameter.id}`);
-=======
+
     },[])
      const getStatus = async()=>{
         let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/getstatus/${parameter.id}`);
->>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615
+
         result = await result.json();
         // console.log("re-->"+result[0].name);
         if (result) {
@@ -30,21 +30,21 @@ const Status = () => {
 
     }
 
-<<<<<<< HEAD
+
 
     const Workdone = async (id) => {
         let result = await fetch(`http://localhost:5000/putstatus/${id}`, {
             method: "put",
             body: await JSON.stringify({ status }),
             headers: {
-=======
+
     
      const Workdone = async (id)=>{
         let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/putstatus/${id}`,{
             method:"put",
             body:await JSON.stringify({status}),
             headers:{
->>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615
+
                 "Content-Type": 'application/json'
             }
         });
@@ -69,7 +69,7 @@ const Status = () => {
     //  useEffect(()=>{
     //     DeleteForStudent();
     //  },[])
-<<<<<<< HEAD
+
     const DeleteForStudent = async (id, deleteforadmin) => {
         if (deleteforadmin === "true") {
             let result = await fetch(`http://localhost:5000/delete/${id}`, {
@@ -82,7 +82,7 @@ const Status = () => {
                 method: "put",
                 body: await JSON.stringify({ deleteforstudent }),
                 headers: {
-=======
+
       const DeleteForStudent = async(id,deleteforadmin)=>{
         if(deleteforadmin==="true"){
           let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/delete/${id}`,{
@@ -95,7 +95,7 @@ const Status = () => {
                 method:"put",
                 body: await JSON.stringify({deleteforstudent}),
                 headers:{
->>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615
+
                     "Content-Type": 'application/json'
                 }
             });
