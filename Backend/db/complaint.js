@@ -19,7 +19,8 @@ const complaintSchema = new mongoose.Schema(
          carpenter:String,
          internet:String,
          deleteforstudent:String,
-         deleteforadmin:String
+         deleteforadmin:String,
+         collagename:String
      }
 );
 

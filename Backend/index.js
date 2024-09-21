@@ -51,9 +51,18 @@ app.post("/who",async(req,res)=>{
     }
 })
 
-app.get("/view",async(req,res)=>{
-    let result = await Complaint.find({deleteforadmin:"false"});
-    res.send(result);
+app.get("/view/:collagename/:hostel",async(req,res)=>{
+    try{
+        let result = await Complaint.find({
+            deleteforadmin:"false",
+            collagename:req.params.collagename,
+            hostel:req.params.hostel
+        });
+        res.send(result);
+    }catch (error) {
+        // Handle errors
+        res.status(500).json({ message: "An error occurred while fetching complaints.", error: error.message });
+    }
 })
 
 app.get("/get/:id",async(req,res)=>{
@@ -129,8 +138,11 @@ let result = await Complaint.deleteOne({_id:req.params.id});
 res.send(result);
 })
 
-app.get("/search/:key",async(req,res)=>{
+app.get("/search/:collagename/:hostel/:key",async(req,res)=>{
     let result = await Complaint.find({
+            deleteforadmin:"false",
+            collagename:req.params.collagename,
+            hostel:req.params.hostel,
         "$or":[
             {name:{$regex:req.params.key, $options: "i" }},
             {userid:{$regex:req.params.key, $options: "i" }},

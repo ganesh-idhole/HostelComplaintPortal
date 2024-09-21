@@ -14,7 +14,7 @@ const StudentDetail = () =>{
   const [description,setDescription]=useState();
   const [senderid,SetSenderid]=useState();
   const [senderusername,setSenderusername]=useState();
-  const [status,setStatus]=useState("pending");
+  const [status,setStatus]=useState();
   const [electrician,setElectrician]=useState("Not-Assign");
   const [internet,setInternet]=useState("Not-Assign");
   const [plumber,setPlumber]=useState("Not-Assign");
@@ -73,6 +73,11 @@ const StudentDetail = () =>{
         test = await test.json();
         console.log("test-->"+test["status"]);
 
+      const userData = localStorage.getItem('studentKey');
+      const user = JSON.parse(userData);
+      let collagename = user.collagename;
+      let hostel = user.hostel;
+
      if(test["status"]!=="fulfilled"){
     let Result = await fetch(`http://localhost:5000/getcomplaint/${parameter.id}`,{
       method:"put",
@@ -82,11 +87,11 @@ const StudentDetail = () =>{
       }
     });
       Result = await Result.json();
-      navigate("/view_Complaint");
+      navigate(`/view_Complaint/${collagename}/${hostel}`);
       // console.log("rresult--=>"+Result);
   }else{
     alert("already fulfilled");
-    navigate("/view_Complaint");
+    navigate(`/view_Complaint/${collagename}/${hostel}`);
   }
   }
 

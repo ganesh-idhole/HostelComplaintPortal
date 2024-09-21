@@ -3,7 +3,7 @@ import {useParams,useNavigate} from "react-router-dom";
 
 const Complaint = ()=>{
   const [name,setName]=useState();
-  const [hostel,setHostel]=useState();
+  // const [hostel,setHostel]=useState();
   const [userid,setUserid]=useState();
   const [phone,setPhone]=useState();
   const [date,setDate]=useState();
@@ -48,9 +48,9 @@ const Complaint = ()=>{
   function handleDate(event){
     setDate(event.target.value);
   }
-  function handleHostel(event){
-    setHostel(event.target.value);
-  }
+  // function handleHostel(event){
+  //   setHostel(event.target.value);
+  // }
   function handleUserid(event){
     setUserid(event.target.value);
   }
@@ -71,11 +71,17 @@ const Complaint = ()=>{
     event.preventDefault();
     // console.log(!name);
     // return false;
+    const userData = localStorage.getItem('studentKey');
+    const user = JSON.parse(userData);
+    let collagename = user.collagename;
+    let hostel = user.hostel;
+    console.log(collagename);
+
     if(!name || !userid || !phone || !email || !date || !hostel || !room || !complainttype ){
       setError(true);
       return true;
     }
-    
+  
     setStatus("pending");                                   
     //complaint collection
     if(userid===senderusername){
@@ -83,7 +89,7 @@ const Complaint = ()=>{
         method: "post",
         body: JSON.stringify({ name,userid,phone,email,date,hostel,room,complainttype,description,
           senderid,senderusername,status,electrician,plumber,carpenter,internet,
-        deleteforadmin,deleteforstudent }),
+        deleteforadmin,deleteforstudent ,collagename}),
         headers: {
             "Content-Type": 'application/json'
         }
@@ -99,58 +105,54 @@ const Complaint = ()=>{
   }
   
     return(
-      <div className="form">
-        <h1>Complaint Form</h1>
+      
       <div className="complaintmainform">
-      <div className="ComplaintForm">
-      <form onSubmit={handleSubmit} >
-        <div className="formpart1">
-       <input type="text"  placeholder="name" value={name} onChange={handleName} id="formName"/>
-       {error && !name &&<span >invalid name</span>}<br/>
-       <input type="text" placeholder="UserId" value={userid} onChange={handleUserid}/>
-       {error && !userid &&<span >invalid userid</span>}<br/>
-       <input type="email" placeholder="email" value={email} onChange={handleEmail}/>
-       {error && !email &&<span >invalid email</span>}<br/>
-       <input type="text" placeholder="phone" value={phone} onChange={handlePhone}/>
-       {error && !phone &&<span >invalid phone</span>}<br/>
-       <label>Date : </label>
-       <input type="date" value={date} onChange={handleDate} id="date" />
-       {error && !date &&<span >invalid date</span>}<br/>
-       <label>Hostel : </label>
-       <select value={hostel} onChange={handleHostel}>
+  <div className="ComplaintForm">
+    <h1>Complaint Form</h1>
+    <form onSubmit={handleSubmit}>
+      <label>Name:</label>
+      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+      {error && !name && <span>Invalid name</span>}
+
+      <label>User ID:</label>
+      <input type="text" placeholder="User ID" value={userid} onChange={(e) => setUserid(e.target.value)} />
+      {error && !userid && <span>Invalid UserID</span>}
+
+      <label>Email:</label>
+      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      {error && !email && <span>Invalid email</span>}
+
+      <label>Phone:</label>
+      <input type="text" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+      {error && !phone && <span>Invalid phone</span>}
+
+      <label>Date:</label>
+      <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+      {error && !date && <span>Invalid date</span>}
+
+
+      <label>Room No.:</label>
+      <input type="number" min="101" max="500" value={room} onChange={(e) => setRoom(e.target.value)} />
+      {error && !room && <span>Invalid room</span>}
+
+      <label>Complaint Type:</label>
+      <select value={complainttype} onChange={(e) => setComplainttype(e.target.value)}>
         <option>select</option>
-        <option value="MH-A">MH-A</option>
-        <option value="MH-B">MH-B</option>
-        <option value="MH-C">MH-C</option>
-        <option value="MH-D">MH-D</option>
-        <option value="MH-H">MH-H</option>
-        <option value="LH-A">LH-A</option>
-        <option value="LH-B">LH-B</option>
-        <option value="LH-C">LH-C</option>
-       </select>
-       {error && !hostel &&<span >invalid hostel</span>}<br/>
-       <label>Room No.: </label>
-       <input type="number" min="101" max="500" value={room} onChange={handleRoom} id="Room"/>
-       {error && !room &&<span >invalid room</span>}<br/>
-       <label>Complaint Type : </label>
-       <select value={complainttype} onChange={handleComplainttype}>
-       <option>select</option>
         <option value="Electrical">Electrical</option>
         <option value="Plumbing">Plumbing</option>
         <option value="Internet">Internet</option>
         <option value="Carpentry">Carpentry</option>
-       </select>
-       {error && !complainttype &&<span >invalid complaint</span>}<br/>
-       </div>
-       <div className="formpart2">
-       <label>Problem Description : </label><br/>
-       <textarea  placeholder="Write Your issue..." rows={10} cols={50} value={description} onChange={handleDescription}/><br/>
-       <button type="submit">Submit</button>
-       </div>
-       </form>
-       </div>
-       </div>
-       </div>
+      </select>
+      {error && !complainttype && <span>Invalid complaint type</span>}
+
+      <label>Problem Description:</label>
+      <textarea placeholder="Write your issue..." rows={10} value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
     )
 }
 

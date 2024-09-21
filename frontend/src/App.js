@@ -19,7 +19,7 @@ function App() {
         <Route element={<PrivateComponent/>}>
         <Route path='/' element={<Home/>}/>
         <Route path='/complaint/:id' element={<Complaint/>}/>
-        <Route path="/view_Complaint" element={<ViewComplaint/>}/>
+        <Route path="/view_Complaint/:collagename/:hostel" element={<ViewComplaint/>}/>
         <Route path='/logout' element={<h1>LogOut pege</h1>}/>
         <Route path='/student_detail/:id' element={<StudentDetail/>}/>
         <Route path="/status/:id" element={<Status/>}/>
