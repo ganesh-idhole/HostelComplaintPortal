@@ -49,7 +49,7 @@ const Signup = () => {
 
 
     const submit = async () => {
-<<<<<<< HEAD
+
         if(!username ||  !email ||  !hostel ||  !password || !collagename || !role  ){
             setError(true);
             return true;
@@ -69,10 +69,10 @@ const Signup = () => {
             navigate("/");
         }else if(role==="Admin" && code==="22MCMC03"){
         let result = await fetch("http://localhost:5000/register", {
-=======
+
         console.log(username, email, password);
         let result = await fetch("https://hostelcomplaintportalbackend1.onrender.com/register", {
->>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615
+
             method: "post",
             body: JSON.stringify({ username, email, password, collagename, role, hostel }),
             headers: {
@@ -160,11 +160,4 @@ const Signup = () => {
     )
 }
 export default Signup;
-<<<<<<< HEAD
 
-
-
-
-
-=======
->>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615
