@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-
 const HomePage = () => {
     const [backgroundImage, setBackgroundImage] = useState('');
     const [collage,setCollage]=useState();
@@ -47,18 +46,12 @@ const HomePage = () => {
             }}
         >
             <h1>Welcome to the {collage}  Portal</h1>
-
-const Home = ()=>{
-    return(
-        <div>
-           <h1>Welcome to the Home Page</h1>
-
         </div>
     );
 };
 
-
 export default HomePage;
+
 
 
 
