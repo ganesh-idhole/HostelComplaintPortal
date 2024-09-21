@@ -91,8 +91,4 @@ const Who = ()=>{
     )
 }
 export default Who;
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615
