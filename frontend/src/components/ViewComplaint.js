@@ -20,20 +20,20 @@ const ViewComplaint = () => {
     }, [])
 
     const viewusers = async () => {
-        let result = await fetch(`http://localhost:5000/view/${parameter.collagename}/${parameter.hostel}`);
+        let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/view/${parameter.collagename}/${parameter.hostel}`);
         result = await result.json();
         setUsers(result);
     }
 
     const DeleteForAdmin = async (id, deleteforstudent) => {
         if (deleteforstudent === "true") {
-            let result = await fetch(`http://localhost:5000/delete/${id}`, {
+            let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/delete/${id}`, {
                 method: "delete"
             });
             result = await result.json();
             //   console.log(result);
         } else {
-            let result = await fetch(`http://localhost:5000/update/${id}`, {
+            let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/update/${id}`, {
                 method: "put",
                 body: await JSON.stringify({ deleteforadmin }),
                 headers: {
@@ -49,7 +49,7 @@ const ViewComplaint = () => {
     const search = async (event) => {
         let key = event.target.value;
         if (key) {
-            let result = await fetch(`http://localhost:5000/search/${parameter.collagename}/${parameter.hostel}/${key}`);
+            let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/search/${parameter.collagename}/${parameter.hostel}/${key}`);
             result = await result.json();
             if (result) {
                 setUsers(result);
