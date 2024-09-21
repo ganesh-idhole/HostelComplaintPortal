@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+<<<<<<< HEAD
 const HomePage = () => {
     const [backgroundImage, setBackgroundImage] = useState('');
     const [collage,setCollage]=useState();
@@ -46,8 +47,18 @@ const HomePage = () => {
             }}
         >
             <h1>Welcome to the {collage}  Portal</h1>
+=======
+const Home = ()=>{
+    return(
+        <div>
+           <h1>Welcome to the Home Page</h1>
+>>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615
         </div>
     );
 };
 
+<<<<<<< HEAD
 export default HomePage;
+=======
+export default Home;
+>>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615

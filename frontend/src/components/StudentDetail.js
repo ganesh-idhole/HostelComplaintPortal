@@ -50,7 +50,7 @@ const StudentDetail = () =>{
 
   const getStudentDetail=async()=>{
   //complaint collection
-    let result = await fetch(`http://localhost:5000/get/${parameter.id}`);
+    let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/get/${parameter.id}`);
       result = await result.json();
       //  console.log("senderusername-->",result.senderusername);
     setName(result.name);
@@ -69,7 +69,7 @@ const StudentDetail = () =>{
 
   const submit = async()=>{
     
-     let test = await fetch(`http://localhost:5000/getstatusvalue/${parameter.id}`);
+     let test = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/getstatusvalue/${parameter.id}`);
         test = await test.json();
         console.log("test-->"+test["status"]);
 
@@ -79,7 +79,7 @@ const StudentDetail = () =>{
       let hostel = user.hostel;
 
      if(test["status"]!=="fulfilled"){
-    let Result = await fetch(`http://localhost:5000/getcomplaint/${parameter.id}`,{
+    let Result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/getcomplaint/${parameter.id}`,{
       method:"put",
       body: await JSON.stringify({status,electrician,plumber,carpenter,internet}),
       headers:{

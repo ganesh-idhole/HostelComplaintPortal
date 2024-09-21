@@ -15,16 +15,27 @@ const ViewComplaint = () => {
             navigate("/");
         }
     })
+<<<<<<< HEAD
     useEffect(() => {
         viewusers();
     }, [])
 
     const viewusers = async () => {
         let result = await fetch(`http://localhost:5000/view/${parameter.collagename}/${parameter.hostel}`);
+=======
+    
+    useEffect(()=>{
+          viewusers();
+    },[])
+     
+    const viewusers = async () =>{
+        let result =  await fetch("https://hostelcomplaintportalbackend1.onrender.com/view");
+>>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615
         result = await result.json();
         setUsers(result);
     }
 
+<<<<<<< HEAD
     const DeleteForAdmin = async (id, deleteforstudent) => {
         if (deleteforstudent === "true") {
             let result = await fetch(`http://localhost:5000/delete/${id}`, {
@@ -37,6 +48,20 @@ const ViewComplaint = () => {
                 method: "put",
                 body: await JSON.stringify({ deleteforadmin }),
                 headers: {
+=======
+    const DeleteForAdmin = async(id,deleteforstudent)=>{
+        if(deleteforstudent==="true"){
+            let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/delete/${id}`,{
+              method:"delete"
+            });
+            result = await result.json();
+          //   console.log(result);
+          }else{
+            let result = await fetch(`https://hostelcomplaintportalbackend1.onrender.com/update/${id}`,{
+                method:"put",
+                body:await JSON.stringify({deleteforadmin}),
+                headers:{
+>>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615
                     "Content-Type": 'application/json'
                 }
             });
@@ -48,10 +73,17 @@ const ViewComplaint = () => {
     }
     const search = async (event) => {
         let key = event.target.value;
+<<<<<<< HEAD
         if (key) {
             let result = await fetch(`http://localhost:5000/search/${parameter.collagename}/${parameter.hostel}/${key}`);
             result = await result.json();
             if (result) {
+=======
+        if(key){
+            let result =await fetch(`https://hostelcomplaintportalbackend1.onrender.com/search/${key}`);
+            result=await result.json();
+            if(result){
+>>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615
                 setUsers(result);
             }
         } else {

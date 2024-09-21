@@ -11,7 +11,11 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
+<<<<<<< HEAD
     "dotenv": "^16.4.5",
+=======
+     "dotenv": "^16.4.5",
+>>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615
     "express": "^4.19.2",
     "mongoos": "^0.0.1-security",
     "mongoose": "^8.5.0",

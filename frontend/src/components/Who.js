@@ -32,7 +32,7 @@ const Who = ()=>{
         // console.log("student==>"+username1,password1);
         let username = username1;
         let password = password1;
-        let result = await fetch("http://localhost:5000/who",{
+        let result = await fetch("https://hostelcomplaintportalbackend1.onrender.com/who",{
             method:"post",
             body:JSON.stringify({username,password}),
             headers:{
@@ -53,7 +53,7 @@ const Who = ()=>{
         // console.log("admin"+username2,password2);
         let username=username2;
         let password=password2;
-        let result = await fetch("http://localhost:5000/who",{
+        let result = await fetch("https://hostelcomplaintportalbackend1.onrender.com/who",{
             method:"post",
             body:JSON.stringify({username,password}),
             headers:{
@@ -91,5 +91,8 @@ const Who = ()=>{
     )
 }
 export default Who;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 6f6063ed7290595463dd34d55ab72495c1e7b615
